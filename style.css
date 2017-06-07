@@ -1,0 +1,425 @@
+/*
+
+* BUILDING A CHAIN OF MORE THAN 4 ANIMATIONS, YOU SHOULD THINK OF JS ANIMATION 
+* JS animations: complex state animations
+* dynamic animations
+* emualte physics
+** Support for older BROWSERS IE
+
+* Combining JS for logic and CSS for motion, JS, CSS and SVG is also good 
+
+* best performing properties: opacity, transform for positions, rotating and scaling
+
+* @keyframe animations:  good for demostrations and simple state based animations
+
+* transitons: good for toggling between 2 states and for animating on :hover, :active and :cheked
+
+* svg: vector base animations and icons
+
+*****
+PROPERTIES THAT CAN BE TRANSITION
+https://www.w3.org/TR/css3-transitions/#animatable-css
+
+*/
+
+
+
+/* 
+cubic-bezier 
+
+linear = cubic-bezier(0,0,1,1)
+ease = cubic-bezier(.25,.1,.25,1)
+ease-in = cubic-bezier(.42,0,1,1)
+ease-in-out = cubic-bezier(0.42, 0, 0.58, 1)
+ease-out = cubic-bezier(0,0,.58,1)
+
+
+*/
+
+*, *:after, *:before {
+  	-webkit-box-sizing: border-box;
+  	-moz-box-sizing: border-box;
+  	box-sizing: border-box;
+}
+body {
+    background: #000;
+    margin: 0;
+}
+img { max-width: 100%;}
+p {margin: 0;}
+input[type="text"], input[type="email"], input[type="search"], textarea, select {
+	border: none;
+	background-color: white;
+	width: 300px;
+	padding: .5em;
+	font-size: 1em;
+	/* new */
+	-webkit-transition: background-color .75s ease;
+	-moz-transition: background-color .75s ease;
+	-o-transition: background-color .75s ease;
+	transition: background-color .75s ease;
+}
+textarea {height: 12em;}
+input:focus, textarea:focus {
+	border: 1px solid fuchsia;
+	background-color: purple;
+	color: #fff;
+}
+[class*='wrapContent_'] {
+    margin: 2em auto;
+    width: 25%;
+}
+.wrapbutton {padding: 2em 0;}
+.wrapContent_1 {
+    padding: 0;
+}
+.wrapContent_10, .wrapContent_12, .wrapContent_13, .wrapContent_14 {
+    width: 100%;
+}
+.wrapContent_14 {text-align: center;}
+.wrapContent_3, .wrapContent_4, .wrapContent_5, .wrapContent_6 {
+    margin: 2em 0; 
+}
+.wrapContent_8 {
+    margin: 0;
+    width: 100%;
+    height: 24em;
+}
+.wrapContent_7 {
+    margin: auto;
+    position: relative;
+    width: 100%;
+    height: 27em;
+    background: white;
+}
+.wrapContent_15 {
+    margin: auto;
+    position: relative;
+    width: 100%;
+    height: 8em;
+    background-color: white;    
+     -webkit-animation: bg-color 18s infinite alternate;
+     -moz-animation: bg-color 18s infinite alternate;
+     -o-animation: bg-color 18s infinite alternate;
+     animation: bg-color 18s infinite alternate;
+}
+/*================================================ SPRITE */
+
+.sprite {
+    background: transparent url(imgs/megaman.png) 0 0 no-repeat;
+    width: 38px;
+    height: 316px;
+    margin: 0 auto;
+    animation: megaman 4s steps(11) infinite;
+    transform: scale(1);
+}
+/*================================================ CARD */
+
+.section {
+    width: 20em;
+    margin: 4em auto;
+    animation: bounceup .9s linear, fadeIn .5s ease-in;
+}
+.heading_2 {
+    color: #2196F3;
+    margin: 0 0 .15em 0;
+}
+.card {
+    background: rgba(255, 255, 255, 0.9);
+    font-family: 'Roboto Condensed', sans-serif;
+    padding: 1em;
+    border-radius: 4px;
+    box-shadow: 0px 0px 0px 1px rgba(0, 0, 0, 0.03), 0px 1px 2px 0px rgba(0, 0, 0, 0.05);
+    margin: auto;
+    width: 20em;
+    text-align: center;
+}
+
+.inner {
+    margin: 1em 0 2em 0;
+}
+.icon-space {
+    margin-top: -4em;
+
+}
+.icon-space img {
+    border-radius: 50%;
+    display: block;
+    margin: auto;
+    border: 4px solid white;
+    background: white;
+    width: 100px;
+    height: 100px;
+    box-shadow: 0px 0px 0px 1px rgba(0, 0, 0, 0.03), 0px 1px 2px 0px rgba(0, 0, 0, 0.2);
+}
+/*================================================ IMAGES */
+
+.paperplane {
+    position: absolute;
+    background: transparent url(imgs/paperplane.png) 0 0 no-repeat;
+    width: 236px;
+    height: 236px;
+}
+.plane00 {
+   top: -300px;
+   right: -25px;
+   z-index: 1;
+   animation: fly 2s linear infinite forwards reverse;
+}
+.plane01 {
+    top: -450px; 
+    right: -50px;
+   z-index: 1;
+   animation: fly 3s 2s linear infinite forwards reverse;
+}
+.wrapContent_14 .imgs_art {
+    margin: 1.5em;
+	-webkit-transition: all .5s ease;	
+	-moz-transition: all .5s ease;	
+	-o-transition: all .5s ease;	
+	transition: all .5s ease;
+}
+.wrapContent_14 .imgs_art:hover {
+	-webkit-transform: scale(1.5);	
+	-moz-transform: scale(1.5);	
+	-ms-transform: scale(1.5);	
+	-o-transform: scale(1.5);	
+	transform: scale(1.5);
+	-moz-box-shadow: 0 0 8px #fff;
+	-webkit-box-shadow: 0 0 8px #fff;
+	box-shadow: 0 0 8px #fff;
+	-webkit-backface-visibility: hidden;
+}
+.listImgs {
+    white-space: nowrap;
+    width: 16%;
+}
+.picture_1 {
+    animation: swingart 1s ease-in forwards 4.4s;
+}
+.picture_2 {
+    animation: swingart 1s ease-in forwards 4.6s;
+}
+.picture_3 {
+    animation: swingart 1s ease-in forwards 3.8s;
+}
+.picture_4 {
+    animation: swingart 1s ease-in forwards 4.2s;
+}
+.picture_5 {
+    animation: swingart 1s ease-in forwards 3.6s;
+}
+.picture_6 {
+    animation: swingart 1s ease-in forwards 4.2s;
+}
+.classic_car {
+    animation-name: confused;
+    animation-duration: 2s;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: 3;
+    animation-fill-mode: forwards;
+    animation-direction: alternate;
+}
+.sports_car {
+    animation-name: run;
+    animation-duration: 2s;
+    animation-timing-function: ease-in;
+    animation-iteration-count: 2;
+    animation-fill-mode: forwards;
+    /* animation-direction: reverse, alternate, alternate-reverse */
+    animation-direction: alternate;
+}
+
+.vintage_car {
+    animation-name: ride;
+    animation-duration: 3s;
+    /* animation-timing-function: ease, ease-in ease-out, linear ease-in-out */
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: 1;
+}
+.marble {
+    animation-name: speeding;
+    animation-duration: 6s;
+    animation-timing-function: ease-in;
+    animation-iteration-count: infinite;
+    animation-delay: 1s;
+    animation-fill-mode: both;
+}
+/*============================================== VINYL */
+
+.vinyl {
+    background: transparent url(imgs/vinyl.png) 0 0 no-repeat;
+    width: 313px;
+    height: 303px;
+    margin: 0 auto;
+    animation: play 2s linear infinite;
+}
+.playText {
+    color: white;
+    font-size: 4em;
+    margin: -3em 0 0 0;
+    position: absolute;
+    width: 100%;
+    text-align: center;
+}
+.vinyl:hover {
+    /* animation-play-state: paused, running */
+    animation-play-state: paused;
+}
+/*============================================== FORM */
+.paragraph {
+	font-size: .5em;
+	text-align: justify;
+	color: white;
+	-webkit-transition: font-size .5s ease;
+	-moz-transition: font-size .5s ease;
+	-o-transition: font-size .5s ease;
+	transition: font-size .5s ease;
+}
+.paragraph:hover {font-size: 1em;}
+.text {
+	display: block;
+	color: #fff;
+}
+/*============================================== BUTTONS */
+
+.btn_trans {
+    display: block;
+    margin: 1em 0;
+	width: 12em;
+	height: 4em;
+	border: 1px solid #fff;
+	background-color: purple;
+	color: #fff;
+	text-align: center;
+	-webkit-transition: all 3s .5s;
+	-moz-transition: all 3s .5s;
+	-o-transition: all 3s .5s;
+	transition: all 3s .5s;
+}
+.btn_trans:hover {
+	background-color: #fff;
+	color: #000;
+	-webkit-transform: translate(40em, 0);
+	-moz-transform: translate(40em, 0);
+	-o-transform: translate(40em, 0);
+	transform: translate(40em, 0);
+}
+.button {
+    background: cyan;
+    font-size: 1em;
+    font-weight: bolder;
+    border: 0;
+    color: white;
+    display: block;
+    padding: 2em 3em;
+    margin: 2em auto;
+
+    transition: background .5s ease-in, transform .5s .25s ease-in-out;
+}
+.button:hover {
+    background: blue;
+    transform: scale(1.2) rotateX(360deg);
+}
+.ease {
+	-webkit-transition-timing-function: ease;	
+	-moz-transition-timing-function: ease;	
+	-o-transition-timing-function: ease;	
+	transition-timing-function: ease;	
+}
+.linear {
+	-webkit-transition-timing-function: linear;	
+	-moz-transition-timing-function: linear;	
+	-o-transition-timing-function: linear;	
+	transition-timing-function: linear;	
+}
+.ease-in {
+	-webkit-transition-timing-function: ease-in;	
+	-moz-transition-timing-function: ease-in;	
+	-o-transition-timing-function: ease-in;	
+	transition-timing-function: ease-in;	
+}
+.ease-out {
+	-webkit-transition-timing-function: ease-out;	
+	-moz-transition-timing-function: ease-out;	
+	-o-transition-timing-function: ease-out;	
+	transition-timing-function: ease-out;	
+}
+.ease-in-out {
+	-webkit-transition-timing-function: ease-in-out;	
+	-moz-transition-timing-function: ease-in-out;	
+	-o-transition-timing-function: ease-in-out;	
+	transition-timing-function: ease-in-out;	
+}
+/*============================================= KEYFRAMES */
+
+@keyframes ride {
+    from {transform: translateX(1000px);}
+    to {transform: translateX(0);}
+}
+@keyframes speeding {
+    0% {transform: translateX(1000px) rotate(1.2turn);}
+    20% {transform: translateX(-10px) rotate(-0.5turn);}
+    100% {transform: translateX(1000px) rotate(2turn);}
+}
+@keyframes run {
+    from {transform: translateX(0);}
+    to {transform: translateX(1000px);}
+}
+@keyframes confused {
+    0% {transform: translateX(0);}
+    20% {transform: translateX(-10px);}
+    35% {transform: translateX(250px);}
+    90% {transform: translateX(500px);}
+    100% {transform: translateX(1000px);}
+}
+@keyframes fly {
+     from {transform: translateX(-2600px) translateY(1600px);}
+    to {transform: translateX(10px) translateY(0);}
+}
+@keyframes bounceup {
+     0% {
+        transform: translateY(500px);
+        animation-timing-function: ease-out;
+     }
+    60% {
+        transform: translateY(-50px);
+        animation-timing-function: ease-in;
+    }
+    80% {
+        transform: translateY(30px);
+        animation-timing-function: ease-out;
+    }
+    100% {
+        transform: translateY(0);
+        animation-timing-function: ease-in;
+    }
+}
+@keyframes fadeIn {
+    from {opacity: 0;}
+    to {opacity: 1;}
+}
+@keyframes play {
+    100% {transform: rotate(1turn);}
+}
+@keyframes megaman {
+    0% {background-position: 0 0;}
+    100%{background-position: -436px 0;}
+}
+@keyframes bg-color {
+      0% {background-color: white;}
+     25% {background-color: aqua;}
+     35% {background-color: yellow;}
+     50% {background-color: purple;}
+     75% {background-color: lime;}
+     90% {background-color: orange}
+     100% {background-color: blue;}	
+}
+@keyframes swingart {
+     0% {transform: rotateX(0);}
+    20% {transform: rotateX(0) rotateY(-45deg);}
+    40% {transform: rotateX(0) rotateY(45deg);}
+    60% {transform: rotateX(0) rotateY(-45deg);}
+    80% {transform: rotateX(0) rotateY(45deg);}
+    100% {transform: rotateX(0);}
+}
